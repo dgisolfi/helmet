@@ -1,0 +1,15 @@
+name: helmet
+
+services:
+  distro:
+    image: ${IMAGE_NAME:-helmet-core:0.1-nucleus}
+    hostname: helmet
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: distro
+      args:
+        DISTRIBUTION: ${DISTRIBUTION:-helmet-core}
+        PACKAGE_SET: ${PACKAGE_SET:-default}
+    stdin_open: true
+    tty: true
